@@ -123,11 +123,11 @@ bool findClientInFile(string accountNum, ClientRecord &client, string fileName)
     return false;
 }
 
-void deleteClientRecord(string accountNum)
+void deleteClientRecord(string accountNum, string fileName)
 {
     char confirmDelete;
 
-    ifstream originalFile(clientsFile);
+    ifstream originalFile(fileName);
     ofstream tempFile("temp.txt");
 
     cout << "\nAre you sure you want to delete this client ( Y, N )? ";
@@ -171,7 +171,7 @@ int main()
     if (findClientInFile(accountNum, client, clientsFile))
     {
         printClientRecord(client);
-        deleteClientRecord(accountNum);
+        deleteClientRecord(accountNum, clientsFile);
     }
     else
     {
